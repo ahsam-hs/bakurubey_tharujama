@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: title,
       theme: ThemeData(
-        primaryColor: Color(0xff139d73),
+        primaryColor: Color(0xff33c296),
       ),
       home: MyHomePage(title: title),
     );
