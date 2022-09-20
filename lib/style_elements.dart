@@ -9,6 +9,7 @@ Color mainTextColor = Color(0xfffcfcfc);
 Color subTextColor = Color(0xffe1ece9);
 Color iconColor = Color(0xff139c72);
 Color buttonColor = Color(0xff1da16e);
+Color primeColor = Color(0xff33c296);
 
 // Strings
 String title = 'ބަކުރުބެގެ ޤުރްއާން ތަރުޖަމާ';

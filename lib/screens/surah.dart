@@ -16,16 +16,11 @@ class SurahPage extends StatefulWidget {
 
 class _SurahPageState extends State<SurahPage> {
   List<dynamic> _aayaat = [];
-  String initialLiteralText = "ލަފްޒީ މާނަ ބެއްލެވުމަށް ...";
-  List<String> retrievedAyahList = [];
-  List<String> retrievedSurahList = [];
 
   Future<void> readJson() async {
     final String response =
         await rootBundle.loadString('assets/surah_table.json');
-    //   List<dynamic> data = await json.decode(response)[widget.surahNumber];
     Map<String, dynamic> map = await json.decode(response);
-    // map[widget.surahNumber] = map[widget.surahNumber]
     List<dynamic> data = map[widget.surahNumber];
     setState(() {
       _aayaat = data;

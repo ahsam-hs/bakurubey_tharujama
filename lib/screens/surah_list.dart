@@ -55,9 +55,9 @@ class _SurahListState extends State<SurahList> {
                             Text(
                               surahName.substring(surahName.indexOf('س')),
                               style: TextStyle(
-                                fontFamily: 'Arslan',
+                                fontFamily: 'Uthmanic',
                                 color: subTextColor,
-                                fontSize: 25.0,
+                                fontSize: 20.0,
                               ),
                             ),
                             Text(
