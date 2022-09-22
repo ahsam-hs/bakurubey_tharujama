@@ -54,11 +54,7 @@ class _SurahListState extends State<SurahList> {
                           children: [
                             Text(
                               surahName.substring(surahName.indexOf('س')),
-                              style: TextStyle(
-                                fontFamily: 'Uthmanic',
-                                color: subTextColor,
-                                fontSize: 20.0,
-                              ),
+                              style: surahListStyle,
                             ),
                             Text(
                               quran.getVerseCount(count + 1).toString() +

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-
+import 'surah.dart';
 import '../style_elements.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -92,13 +92,36 @@ class _JuzPageState extends State<JuzPage> {
                               style: ayahTextStyle,
                             ),
                           ),
-                          Padding(
-                            padding: cardShowInsets,
-                            child: Text(
-                              _aayaat[count]["translation"],
-                              style: translationTextStyle,
-                            ),
+                          TranslationText(
+                              aayaat: _aayaat,
+                              counter: count,
+                              dhivehiLabel: "އިޖްމާލީ މާނަ",
+                              item: "literary"),
+                          SizedBox(
+                            height: 20.0,
                           ),
+                          TranslationText(
+                              aayaat: _aayaat,
+                              counter: count,
+                              dhivehiLabel: "ލަފްޒީ މާނަ",
+                              item: "translation"),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          // Padding(
+                          //   padding: cardShowInsets,
+                          //   child: Text(
+                          //     _aayaat[count]["ayah"],
+                          //     style: ayahTextStyle,
+                          //   ),
+                          // ),
+                          // Padding(
+                          //   padding: cardShowInsets,
+                          //   child: Text(
+                          //     _aayaat[count]["translation"],
+                          //     style: translationTextStyle,
+                          //   ),
+                          // ),
                         ],
                       ),
                     );

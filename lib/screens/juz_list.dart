@@ -50,11 +50,7 @@ class _JuzListState extends State<JuzList> {
                       children: [
                         Text(
                           lists.juzName[count],
-                          style: TextStyle(
-                            fontFamily: 'Arslan',
-                            color: subTextColor,
-                            fontSize: 25.0,
-                          ),
+                          style: surahListStyle,
                         ),
                         Text(
                           lists.juzArabicNumbers[count],

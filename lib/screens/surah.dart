@@ -154,6 +154,7 @@ class TranslationText extends StatelessWidget {
             ),
             expanded: Text(
               _aayaat[counter][item],
+              textAlign: TextAlign.justify,
               style: translationTextStyle,
             ),
             builder: (_, collapsed, expanded) => Expandable(

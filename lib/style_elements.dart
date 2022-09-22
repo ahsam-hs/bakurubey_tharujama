@@ -21,9 +21,9 @@ EdgeInsets cardShowInsets = const EdgeInsets.symmetric(
 );
 
 //Text styles
-TextStyle ayahTextStyle = TextStyle(
+const ayahTextStyle = TextStyle(
   fontFamily: 'Uthmanic',
-  color: subTextColor,
+  color: Color(0xffe1ece9),
   fontSize: 28.0,
 );
 
@@ -33,8 +33,14 @@ TextStyle translationTextStyle = TextStyle(
   fontSize: 17.0,
 );
 
-TextStyle pageTitleStyle = TextStyle(
+const pageTitleStyle = TextStyle(
   fontFamily: 'Janna',
   fontWeight: FontWeight.w500,
   fontSize: 25.0,
+);
+
+TextStyle surahListStyle = TextStyle(
+  fontFamily: 'Uthmanic',
+  color: subTextColor,
+  fontSize: 20.0,
 );
