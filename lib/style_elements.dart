@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 // Colors
 Color bgColor = Color(0xff000b06);
@@ -10,14 +10,25 @@ Color subTextColor = Color(0xffe1ece9);
 Color iconColor = Color(0xff139c72);
 Color buttonColor = Color(0xff1da16e);
 Color primeColor = Color(0xff33c296);
+Color errorMessageBG = Color(0xda9f5520);
+Color telegramColor = Color(0xff259cd8);
 
 // Strings
 String title = 'ބަކުރުބެގެ ޤުރްއާން ތަރުޖަމާ';
+String ayai = 'އާޔަތް';
+String ijmaalee = 'އިޖްމާލީ މާނަ';
+String lafzee = 'ލަފްޒީ މާނަ';
 
 /* Edge inset values*/
 EdgeInsets cardShowInsets = const EdgeInsets.symmetric(
   vertical: 15.0,
   horizontal: 25.0,
+);
+
+const dropDownNumberTextStyle = TextStyle(
+  fontFamily: 'Typewriter',
+  color: Colors.white,
+  fontSize: 15,
 );
 
 //Text styles
@@ -34,13 +45,29 @@ TextStyle translationTextStyle = TextStyle(
 );
 
 const pageTitleStyle = TextStyle(
-  fontFamily: 'Janna',
-  fontWeight: FontWeight.w500,
-  fontSize: 25.0,
+  fontFamily: 'Arslan',
+  fontWeight: FontWeight.w800,
+  fontSize: 30.0,
 );
 
 TextStyle surahListStyle = TextStyle(
   fontFamily: 'Uthmanic',
   color: subTextColor,
   fontSize: 20.0,
+);
+
+SnackBar snackBar = SnackBar(
+  backgroundColor: errorMessageBG,
+  behavior: SnackBarBehavior.floating,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(20.0),
+  ),
+  content: const Text(
+    "ރަނގަޅު އާޔަތެއް އިޚްތިޔާރުކުރައްވާ!",
+    style: TextStyle(
+      color: Colors.white,
+      fontFamily: 'Typewriter',
+      fontSize: 17,
+    ),
+  ),
 );

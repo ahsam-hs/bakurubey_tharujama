@@ -1,10 +1,12 @@
 import 'dart:convert';
-
 import 'package:bakurubey_tharujama/style_elements.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bakurubey_tharujama/lists.dart' as lists;
 import 'package:flutter/services.dart';
+import 'package:quran/quran.dart';
+
+import '../search_result_widget.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -24,12 +26,15 @@ class _SearchState extends State<Search> {
   String selectedAyah = '';
   String? selectedAyahValue;
   int ayahNumberText = 1;
+  String? mappedString;
+  List<int> preciseAyahList = [];
+  List<String> preciseAyahListString = [];
+  int maxAyah = 0;
 
   String getSelectedSurah() {
     setState(() {
       selectedSurah = surahNumberText;
     });
-    debugPrint(selectedSurah);
     return selectedSurah;
   }
 
@@ -37,24 +42,26 @@ class _SearchState extends State<Search> {
     setState(() {
       selectedAyah = selectedAyahValue ?? "";
     });
-    debugPrint(selectedAyah);
     return selectedAyah;
   }
 
   List<dynamic> _ayah = [];
 
   Future<void> readJsonData(String surahNumber, int ayahNumber) async {
-    final String response =
-        await rootBundle.loadString('assets/surah_table.json');
-    Map<String, dynamic> map = await json.decode(response);
-    List<dynamic> data = map[surahNumber];
-    setState(() {
-      _ayah = data;
-    });
-    debugPrint(_ayah[ayahNumber]["ayah"]);
-    finalAyahText = _ayah[ayahNumber]["ayah"];
-    finalTranslationText = _ayah[ayahNumber]["literary"];
-    finalLiteraryText = _ayah[ayahNumber]["translation"];
+    try {
+      final String response =
+          await rootBundle.loadString('assets/surah_table.json');
+      Map<String, dynamic> map = await json.decode(response);
+      List<dynamic> data = map[surahNumber];
+      setState(() {
+        _ayah = data;
+      });
+      finalAyahText = _ayah[ayahNumber]["ayah"];
+      finalTranslationText = _ayah[ayahNumber]["literary"];
+      finalLiteraryText = _ayah[ayahNumber]["translation"];
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 
   @override
@@ -64,10 +71,7 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
-    return Flex(
-      direction: Axis.vertical,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return ListView(
       children: [
         Padding(
           padding: const EdgeInsets.all(18.0),
@@ -93,11 +97,7 @@ class _SearchState extends State<Search> {
                             isExpanded: false,
                             hint: const Text(
                               'ސޫރަތް',
-                              style: TextStyle(
-                                fontFamily: 'Typewriter',
-                                color: Colors.white,
-                                fontSize: 15,
-                              ),
+                              style: dropDownNumberTextStyle,
                             ),
                             value: selectedSurahValue,
                             items: lists.surah
@@ -123,10 +123,17 @@ class _SearchState extends State<Search> {
                               selectedSurahValue = value;
                               surahNumberText =
                                   (lists.surah.indexOf(value!) + 1).toString();
+                              maxAyah =
+                                  getVerseCount(int.parse(surahNumberText));
+                              preciseAyahList = List<int>.generate(
+                                  maxAyah, (index) => index + 1);
+                              // preciseAyahListString = preciseAyahList
+                              //     .map((e) => e.toString())
+                              //     .toList();
+                              // debugPrint(preciseAyahListString.toString());
                               setState(() {
                                 value;
                               });
-                              debugPrint("surah number is " + surahNumberText);
                             },
                           ),
                         ),
@@ -136,13 +143,9 @@ class _SearchState extends State<Search> {
                       DropdownButtonHideUnderline(
                         child: StatefulBuilder(
                           builder: (context, setState) => DropdownButton(
-                            hint: const Text(
-                              ' އާޔަތް',
-                              style: TextStyle(
-                                fontFamily: 'Typewriter',
-                                color: Colors.white,
-                                fontSize: 15,
-                              ),
+                            hint: Text(
+                              ayai,
+                              style: dropDownNumberTextStyle,
                             ),
                             dropdownColor: cardColor,
                             borderRadius: BorderRadius.circular(18),
@@ -157,10 +160,7 @@ class _SearchState extends State<Search> {
                                         child: Text(
                                           e,
                                           textDirection: TextDirection.rtl,
-                                          style: const TextStyle(
-                                              fontFamily: 'Typewriter',
-                                              color: Colors.white,
-                                              fontSize: 15),
+                                          style: dropDownNumberTextStyle,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
@@ -172,9 +172,6 @@ class _SearchState extends State<Search> {
                             onChanged: (value) {
                               setState(() {
                                 selectedAyahValue = value as String;
-                                // debugPrint(_ayah[ayahNumberText].toString());
-                                debugPrint(
-                                    "ayah number is " + selectedAyahValue!);
                               });
                             },
                           ),
@@ -195,9 +192,12 @@ class _SearchState extends State<Search> {
                     onPressed: () {
                       HapticFeedback.mediumImpact();
                       setState(() {
-                        ayahNumberText = int.parse(selectedAyahValue!);
-                        debugPrint("selected ayah value in on pressed" +
-                            ayahNumberText.toString());
+                        debugPrint(preciseAyahListString.toString());
+                        try {
+                          ayahNumberText = int.parse(selectedAyahValue!);
+                        } catch (e) {
+                          //
+                        }
                         readJsonData(getSelectedSurah(), ayahNumberText - 1);
                       });
                     },
@@ -227,28 +227,17 @@ class _SearchState extends State<Search> {
                 direction: Axis.vertical,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      finalAyahText,
-                      style: ayahTextStyle,
-                    ),
+                  SearchResult(
+                    resultText: finalAyahText,
+                    resultStyle: ayahTextStyle,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      "އިޖްމާލީ މާނަ: " + finalTranslationText,
-                      textAlign: TextAlign.justify,
-                      style: translationTextStyle,
-                    ),
+                  SearchResult(
+                    resultText: ijmaalee + ": " + finalTranslationText,
+                    resultStyle: translationTextStyle,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      "ލަފްޒީ މާނަ: " + finalLiteraryText,
-                      textAlign: TextAlign.justify,
-                      style: translationTextStyle,
-                    ),
+                  SearchResult(
+                    resultText: lafzee + ": " + finalLiteraryText,
+                    resultStyle: translationTextStyle,
                   ),
                 ],
               ),

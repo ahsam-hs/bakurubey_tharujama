@@ -20,6 +20,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   quran: ^1.1.2
   expandable: ^5.0.1
+  url_launcher: ^6.1.6
 
 dev_dependencies:
   flutter_test:

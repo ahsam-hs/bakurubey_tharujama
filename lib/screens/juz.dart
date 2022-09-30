@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-import 'surah.dart';
 import '../style_elements.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../home.dart';
+import 'package:bakurubey_tharujama/translation_text_widget.dart';
 
 class JuzPage extends StatefulWidget {
   const JuzPage({Key? key, required this.juzNumber, required this.juzName})
@@ -22,8 +21,6 @@ class _JuzPageState extends State<JuzPage> {
     final String response =
         await rootBundle.loadString('assets/juz_table.json');
     List<dynamic> data = await json.decode(response)[widget.juzNumber];
-//    Map<String, dynamic> map = await json.decode(response);
-    //  List<dynamic> data = map[widget.surahNumber];
     setState(() {
       _aayaat = data;
     });
@@ -34,7 +31,6 @@ class _JuzPageState extends State<JuzPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await readJson();
-      print(_aayaat);
     });
   }
 
@@ -97,7 +93,7 @@ class _JuzPageState extends State<JuzPage> {
                               counter: count,
                               dhivehiLabel: "އިޖްމާލީ މާނަ",
                               item: "literary"),
-                          SizedBox(
+                          const SizedBox(
                             height: 20.0,
                           ),
                           TranslationText(
@@ -105,23 +101,9 @@ class _JuzPageState extends State<JuzPage> {
                               counter: count,
                               dhivehiLabel: "ލަފްޒީ މާނަ",
                               item: "translation"),
-                          SizedBox(
+                          const SizedBox(
                             height: 20.0,
                           ),
-                          // Padding(
-                          //   padding: cardShowInsets,
-                          //   child: Text(
-                          //     _aayaat[count]["ayah"],
-                          //     style: ayahTextStyle,
-                          //   ),
-                          // ),
-                          // Padding(
-                          //   padding: cardShowInsets,
-                          //   child: Text(
-                          //     _aayaat[count]["translation"],
-                          //     style: translationTextStyle,
-                          //   ),
-                          // ),
                         ],
                       ),
                     );
