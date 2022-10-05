@@ -36,53 +36,53 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   onPressed: () {
                     showDialog(
-                        context: (context),
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            backgroundColor: cardColor,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0)),
-                            content: Directionality(
-                              textDirection: TextDirection.rtl,
-                              child: SizedBox(
-                                height: double.maxFinite,
-                                width: double.maxFinite,
-                                child: ListView(
-                                  scrollDirection: Axis.vertical,
-                                  children: [
-                                    Text(
-                                      'މި ތަރުޖަމާއަކީ...',
-                                      style: pageTitleStyle.copyWith(
-                                          color: buttonColor,
-                                          fontFamily: 'Midhili'),
-                                    ),
-                                    const SizedBox(
-                                      height: 25.0,
-                                    ),
-                                    Text(
-                                      tributeText,
-                                      style: translationTextStyle,
-                                      textAlign: TextAlign.justify,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: const [
-                                        ContactButton(
-                                            contactName: 'ޙަދީޘް އެމް ވީ',
-                                            uriString:
-                                                'https://t.me/ashraafmv'),
-                                        ContactButton(
-                                            contactName: "އަޅުގަނޑު",
-                                            uriString: 'https://t.me/ahsammmm'),
-                                      ],
-                                    )
-                                  ],
-                                ),
+                      context: (context),
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          backgroundColor: cardColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0)),
+                          content: Directionality(
+                            textDirection: TextDirection.rtl,
+                            child: SizedBox(
+                              height: double.maxFinite,
+                              width: double.maxFinite,
+                              child: ListView(
+                                scrollDirection: Axis.vertical,
+                                children: [
+                                  Text(
+                                    'މި ތަރުޖަމާއަކީ...',
+                                    style: pageTitleStyle.copyWith(
+                                        color: buttonColor,
+                                        fontFamily: 'Midhili'),
+                                  ),
+                                  const SizedBox(
+                                    height: 25.0,
+                                  ),
+                                  Text(
+                                    tributeText,
+                                    style: translationTextStyle,
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: const [
+                                      ContactButton(
+                                          contactName: 'ޙަދީޘް އެމް ވީ',
+                                          uriString: 'https://t.me/ashraafmv'),
+                                      ContactButton(
+                                          contactName: "އަޅުގަނޑު",
+                                          uriString: 'https://t.me/ahsammmm'),
+                                    ],
+                                  )
+                                ],
                               ),
                             ),
-                          );
-                        });
+                          ),
+                        );
+                      },
+                    );
                   },
                 ),
               ),

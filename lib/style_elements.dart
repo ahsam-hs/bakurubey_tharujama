@@ -47,7 +47,7 @@ TextStyle translationTextStyle = TextStyle(
 const pageTitleStyle = TextStyle(
   fontFamily: 'Arslan',
   fontWeight: FontWeight.w800,
-  fontSize: 30.0,
+  fontSize: 25.0,
 );
 
 TextStyle surahListStyle = TextStyle(
@@ -56,18 +56,21 @@ TextStyle surahListStyle = TextStyle(
   fontSize: 20.0,
 );
 
+const snackTextStyle = TextStyle(
+  color: Colors.white,
+  fontFamily: 'Typewriter',
+  fontSize: 17,
+);
+
+ShapeBorder snackShape =
+    RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0));
+
 SnackBar snackBar = SnackBar(
   backgroundColor: errorMessageBG,
   behavior: SnackBarBehavior.floating,
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(20.0),
-  ),
+  shape: snackShape,
   content: const Text(
     "ރަނގަޅު އާޔަތެއް އިޚްތިޔާރުކުރައްވާ!",
-    style: TextStyle(
-      color: Colors.white,
-      fontFamily: 'Typewriter',
-      fontSize: 17,
-    ),
+    style: snackTextStyle,
   ),
 );

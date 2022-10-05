@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'package:expandable/expandable.dart';
 import 'package:bakurubey_tharujama/style_elements.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bakurubey_tharujama/translation_text_widget.dart';
+import 'package:bakurubey_tharujama/copy.dart';
 
 class SurahPage extends StatefulWidget {
   const SurahPage(
@@ -85,24 +85,42 @@ class _SurahPageState extends State<SurahPage> {
                         children: [
                           Padding(
                             padding: cardShowInsets,
-                            child: Text(
-                              _aayaat[count]["ayah"], //"ayah"
-                              style: ayahTextStyle,
+                            child: GestureDetector(
+                              child: Text(
+                                _aayaat[count]["ayah"], //"ayah"
+                                style: ayahTextStyle,
+                              ),
+                              onLongPress: () => copyData(
+                                  _aayaat[count]["ayah"],
+                                  "އާޔަތް ކޮޕީކުރެވިއްޖެ",
+                                  context),
                             ),
                           ),
-                          TranslationText(
-                              aayaat: _aayaat,
-                              counter: count,
-                              dhivehiLabel: "އިޖްމާލީ މާނަ",
-                              item: "literary"),
+                          GestureDetector(
+                            onLongPress: () => copyData(
+                                _aayaat[count]["literary"],
+                                "އިޖްމާލީ މާނަ ކޮޕީކުރެވިއްޖެ",
+                                context),
+                            child: TranslationText(
+                                aayaat: _aayaat,
+                                counter: count,
+                                dhivehiLabel: "އިޖްމާލީ މާނަ",
+                                item: "literary"),
+                          ),
                           const SizedBox(
                             height: 15.0,
                           ),
-                          TranslationText(
-                            aayaat: _aayaat,
-                            item: "translation",
-                            counter: count,
-                            dhivehiLabel: "ލަފްޒީ މާނަ",
+                          GestureDetector(
+                            onLongPress: () => copyData(
+                                _aayaat[count]["translation"],
+                                "ލަފްޒީ މާނަ ކޮޕީކުރެވިއްޖެ",
+                                context),
+                            child: TranslationText(
+                              aayaat: _aayaat,
+                              item: "translation",
+                              counter: count,
+                              dhivehiLabel: "ލަފްޒީ މާނަ",
+                            ),
                           ),
                           const SizedBox(
                             height: 15.0,

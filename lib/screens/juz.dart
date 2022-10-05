@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
+import '../copy.dart';
 import '../style_elements.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -81,26 +82,42 @@ class _JuzPageState extends State<JuzPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: cardShowInsets,
-                            child: Text(
-                              _aayaat[count]["ayah"],
-                              style: ayahTextStyle,
+                          GestureDetector(
+                            onLongPress: () => copyData(_aayaat[count]["ayah"],
+                                "އާޔަތް ކޮޕީކުރެވިއްޖެ", context),
+                            child: Padding(
+                              padding: cardShowInsets,
+                              child: Text(
+                                _aayaat[count]["ayah"],
+                                style: ayahTextStyle,
+                              ),
                             ),
                           ),
-                          TranslationText(
-                              aayaat: _aayaat,
-                              counter: count,
-                              dhivehiLabel: "އިޖްމާލީ މާނަ",
-                              item: "literary"),
+                          GestureDetector(
+                            onLongPress: () => copyData(
+                                _aayaat[count]["literary"],
+                                "އިޖްމާލީ މާނަ ކޮޕީކުރެވިއްޖެ",
+                                context),
+                            child: TranslationText(
+                                aayaat: _aayaat,
+                                counter: count,
+                                dhivehiLabel: "އިޖްމާލީ މާނަ",
+                                item: "literary"),
+                          ),
                           const SizedBox(
                             height: 20.0,
                           ),
-                          TranslationText(
-                              aayaat: _aayaat,
-                              counter: count,
-                              dhivehiLabel: "ލަފްޒީ މާނަ",
-                              item: "translation"),
+                          GestureDetector(
+                            onLongPress: () => copyData(
+                                _aayaat[count]["translation"],
+                                "ލަފްޒީ މާނަ ކޮޕީކުރެވިއްޖެ",
+                                context),
+                            child: TranslationText(
+                                aayaat: _aayaat,
+                                counter: count,
+                                dhivehiLabel: "ލަފްޒީ މާނަ",
+                                item: "translation"),
+                          ),
                           const SizedBox(
                             height: 20.0,
                           ),

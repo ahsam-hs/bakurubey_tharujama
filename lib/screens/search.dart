@@ -6,6 +6,7 @@ import 'package:bakurubey_tharujama/lists.dart' as lists;
 import 'package:flutter/services.dart';
 import 'package:quran/quran.dart';
 
+import '../copy.dart';
 import '../search_result_widget.dart';
 
 class Search extends StatefulWidget {
@@ -192,7 +193,6 @@ class _SearchState extends State<Search> {
                     onPressed: () {
                       HapticFeedback.mediumImpact();
                       setState(() {
-                        debugPrint(preciseAyahListString.toString());
                         try {
                           ayahNumberText = int.parse(selectedAyahValue!);
                         } catch (e) {
@@ -227,17 +227,29 @@ class _SearchState extends State<Search> {
                 direction: Axis.vertical,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SearchResult(
-                    resultText: finalAyahText,
-                    resultStyle: ayahTextStyle,
+                  GestureDetector(
+                    onLongPress: () => copyData(
+                        finalAyahText, "އާޔަތް ކޮޕީކުރެވިއްޖެ", context),
+                    child: SearchResult(
+                      resultText: finalAyahText,
+                      resultStyle: ayahTextStyle,
+                    ),
                   ),
-                  SearchResult(
-                    resultText: ijmaalee + ": " + finalTranslationText,
-                    resultStyle: translationTextStyle,
+                  GestureDetector(
+                    onLongPress: () => copyData(finalTranslationText,
+                        "އިޖްމާލީ މާނަ ކޮޕީކުރެވިއްޖެ", context),
+                    child: SearchResult(
+                      resultText: ijmaalee + ": " + finalTranslationText,
+                      resultStyle: translationTextStyle,
+                    ),
                   ),
-                  SearchResult(
-                    resultText: lafzee + ": " + finalLiteraryText,
-                    resultStyle: translationTextStyle,
+                  GestureDetector(
+                    onLongPress: () => copyData(finalLiteraryText,
+                        "ލަފްޒީ މާނަ ކޮޕީކުރެވިއްޖެ", context),
+                    child: SearchResult(
+                      resultText: lafzee + ": " + finalLiteraryText,
+                      resultStyle: translationTextStyle,
+                    ),
                   ),
                 ],
               ),

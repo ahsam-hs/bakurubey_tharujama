@@ -66,6 +66,10 @@ flutter:
       fonts:
         - asset: fonts/JannaLTBold.ttf
 
+    - family: Diwani
+      fonts:
+        - asset: fonts/Diwanltr.ttf
+
     - family: Typewriter
       fonts:
         - asset: fonts/mvtyper.ttf
