@@ -6,7 +6,6 @@ import 'screens/juz_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'style_elements.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -62,15 +61,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Text(
                                     tributeText,
                                     style: translationTextStyle,
-                                    textAlign: TextAlign.justify,
                                   ),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: const [
-                                      ContactButton(
-                                          contactName: 'ޙަދީޘް އެމް ވީ',
-                                          uriString: 'https://t.me/ashraafmv'),
+                                      // ContactButton(
+                                      //     contactName: 'ޙަދީޘް އެމް ވީ',
+                                      //     uriString: 'https://t.me/ashraafmv'),
                                       ContactButton(
                                           contactName: "އަޅުގަނޑު",
                                           uriString: 'https://t.me/ahsammmm'),

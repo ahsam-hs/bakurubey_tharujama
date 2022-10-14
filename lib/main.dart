@@ -1,5 +1,6 @@
 import 'package:bakurubey_tharujama/style_elements.dart';
 import 'package:flutter/material.dart';
+import 'package:splash_screen_view/SplashScreenView.dart';
 import 'home.dart';
 
 void main() {
@@ -54,7 +55,18 @@ class _MyAppState extends State<MyApp> {
           centerTitle: true,
         ),
       ),
-      home: MyHomePage(title: title),
+      home: SplashScreenView(
+        duration: 2000,
+        imageSrc: 'images/Logo.png',
+        backgroundColor: Colors.black,
+        text: title,
+        textStyle: const TextStyle(
+          fontFamily: 'Midhili',
+          color: Colors.white,
+          fontSize: 22,
+        ),
+        navigateRoute: MyHomePage(title: title),
+      ),
     );
   }
 }
