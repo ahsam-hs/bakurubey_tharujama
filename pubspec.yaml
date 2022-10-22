@@ -42,6 +42,7 @@ flutter:
     - assets/surah_table.json
     - assets/juz_table.json
     - images/Logo.png
+    - images/playstore.png
 
   fonts:
     - family: Uthmanic

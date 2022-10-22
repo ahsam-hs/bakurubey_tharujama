@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ahsam.bakurubey_tharujama">
    <application
-        android:label="Bakurubege Tharujama"
+        android:label="Bakurubeyge Tharujama"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -14,7 +14,7 @@ Color errorMessageBG = Color(0xda9f5520);
 Color telegramColor = Color(0xff259cd8);
 
 // Strings
-String title = 'ބަކުރުބެގެ ޤުރްއާން ތަރުޖަމާ';
+String title = 'ބަކުރުބޭގެ ޤުރްއާން ތަރުޖަމާ';
 String ayai = 'އާޔަތް';
 String ijmaalee = 'އިޖްމާލީ މާނަ';
 String lafzee = 'ލަފްޒީ މާނަ';

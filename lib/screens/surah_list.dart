@@ -79,8 +79,8 @@ class _SurahListState extends State<SurahList> {
                             ),
                             Text(
                               quran.getPlaceOfRevelation(count + 1) == "Makkah"
-                                  ? "މައްކާ"
-                                  : "މަދީނާ",
+                                  ? "މައްކީ"
+                                  : "މަދަނީ",
                               style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                   fontFamily: 'Waheed',

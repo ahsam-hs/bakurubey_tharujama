@@ -34,13 +34,13 @@ class _MyAppState extends State<MyApp> {
           indicatorSize: TabBarIndicatorSize.tab,
           labelStyle: const TextStyle(
             fontFamily: 'Waheed',
-            fontSize: 20.0,
+            fontSize: 18.0,
           ),
           labelPadding: const EdgeInsets.symmetric(horizontal: 35.0),
           labelColor: Colors.white,
           unselectedLabelStyle: const TextStyle(
             fontFamily: 'Waheed',
-            fontSize: 18.0,
+            fontSize: 16.0,
           ),
         ),
         appBarTheme: AppBarTheme(
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
           titleTextStyle: TextStyle(
             color: primeColor,
             fontFamily: 'Midhili',
-            fontSize: 25,
+            fontSize: 20,
           ),
           centerTitle: true,
         ),
@@ -59,11 +59,11 @@ class _MyAppState extends State<MyApp> {
         duration: 2000,
         imageSrc: 'images/Logo.png',
         backgroundColor: Colors.black,
-        text: title,
+        // text: title,
         textStyle: const TextStyle(
           fontFamily: 'Midhili',
           color: Colors.white,
-          fontSize: 22,
+          fontSize: 18,
         ),
         navigateRoute: MyHomePage(title: title),
       ),
