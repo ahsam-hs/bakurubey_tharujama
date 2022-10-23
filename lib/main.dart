@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: SplashScreenView(
         duration: 2000,
-        imageSrc: 'images/Logo.png',
+        imageSrc: 'images/playstore.png',
         backgroundColor: Colors.black,
         // text: title,
         textStyle: const TextStyle(
