@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 void copyData(String data, String text, BuildContext context) {
   Clipboard.setData(ClipboardData(text: data));
+  HapticFeedback.mediumImpact();
   SnackBar snack = SnackBar(
     backgroundColor: primeColor,
     behavior: SnackBarBehavior.floating,
