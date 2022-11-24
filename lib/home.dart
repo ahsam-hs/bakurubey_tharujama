@@ -27,9 +27,9 @@ class _MyHomePageState extends State<MyHomePage> {
           appBar: AppBar(
             actions: [
               Padding(
-                padding: EdgeInsets.only(left: 30.0),
+                padding: const EdgeInsets.only(left: 30.0),
                 child: IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.info,
                     size: 15.0,
                   ),
