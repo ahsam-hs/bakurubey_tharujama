@@ -121,13 +121,15 @@ class _SearchState extends State<Search> {
                                 )
                                 .toList(),
                             onChanged: (String? value) {
-                              selectedSurahValue = value;
-                              surahNumberText =
-                                  (lists.surah.indexOf(value!) + 1).toString();
-                              maxAyah =
-                                  getVerseCount(int.parse(surahNumberText));
-                              preciseAyahList = List<int>.generate(
-                                  maxAyah, (index) => index + 1);
+                              selectedSurahValue =
+                                  value; // the name of the surah in the dropdown menu
+                              surahNumberText = (lists.surah.indexOf(value!) +
+                                      1)
+                                  .toString(); // the index of the the surah in the dropdown menu
+                              // maxAyah =
+                              //     getVerseCount(int.parse(surahNumberText));
+                              // preciseAyahList = List<int>.generate(
+                              //     maxAyah, (index) => index + 1);
                               // preciseAyahListString = preciseAyahList
                               //     .map((e) => e.toString())
                               //     .toList();
@@ -180,34 +182,95 @@ class _SearchState extends State<Search> {
                       ),
                     ],
                   ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith(
-                          (states) => lightCardColor),
-                      shape: MaterialStateProperty.resolveWith(
-                        (states) => RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0),
+                  Flex(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    direction: Axis.horizontal,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          HapticFeedback.mediumImpact();
+                          setState(() {
+                            try {
+                              selectedAyahValue =
+                                  (int.parse(selectedAyahValue!) - 1)
+                                      .toString();
+                              if (int.parse(selectedAyahValue!) <= 0) {
+                                HapticFeedback.vibrate();
+                                selectedAyahValue = "1";
+                                ayahNumberText = int.parse(selectedAyahValue!);
+                              } else {
+                                ayahNumberText = int.parse(selectedAyahValue!);
+                              }
+                            } catch (e) {
+                              //
+                            }
+                            readJsonData(
+                                getSelectedSurah(), ayahNumberText - 1);
+                          });
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios,
+                          color: lightCardColor,
                         ),
                       ),
-                    ),
-                    onPressed: () {
-                      HapticFeedback.mediumImpact();
-                      setState(() {
-                        try {
-                          ayahNumberText = int.parse(selectedAyahValue!);
-                        } catch (e) {
-                          //
-                        }
-                        readJsonData(getSelectedSurah(), ayahNumberText - 1);
-                      });
-                    },
-                    child: const Text(
-                      'ހޯދާ',
-                      style: TextStyle(
-                        fontFamily: 'Waheed',
-                        fontSize: 20,
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.resolveWith(
+                              (states) => lightCardColor),
+                          shape: MaterialStateProperty.resolveWith(
+                            (states) => RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          HapticFeedback.mediumImpact();
+                          setState(() {
+                            try {
+                              ayahNumberText = int.parse(selectedAyahValue!);
+                            } catch (e) {
+                              //
+                            }
+                            readJsonData(
+                                getSelectedSurah(), ayahNumberText - 1);
+                          });
+                        },
+                        child: const Text(
+                          'ހޯދާ',
+                          style: TextStyle(
+                            fontFamily: 'Waheed',
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
-                    ),
+                      IconButton(
+                        onPressed: () {
+                          HapticFeedback.mediumImpact();
+                          setState(() {
+                            try {
+                              selectedAyahValue =
+                                  (int.parse(selectedAyahValue!) + 1)
+                                      .toString();
+                              if (int.parse(selectedAyahValue!) > 286) {
+                                selectedAyahValue = "286";
+                                HapticFeedback.vibrate();
+                                ayahNumberText = int.parse(selectedAyahValue!);
+                              } else {
+                                ayahNumberText = int.parse(selectedAyahValue!);
+                              }
+                            } catch (e) {
+                              //
+                            }
+                            readJsonData(
+                                getSelectedSurah(), ayahNumberText - 1);
+                          });
+                        },
+                        icon: Icon(
+                          Icons.arrow_forward_ios,
+                          color: lightCardColor,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -14,7 +14,7 @@ class SearchResult extends StatelessWidget {
       padding: const EdgeInsets.all(15.0),
       child: Text(
         resultText,
-        textAlign: TextAlign.justify,
+        textAlign: TextAlign.start,
         style: resultStyle,
       ),
     );

@@ -36,7 +36,7 @@ class TranslationText extends StatelessWidget {
             ),
             expanded: Text(
               _aayaat[counter][item],
-              textAlign: TextAlign.justify,
+              textAlign: TextAlign.start,
               style: translationTextStyle,
             ),
             builder: (_, collapsed, expanded) => Expandable(
