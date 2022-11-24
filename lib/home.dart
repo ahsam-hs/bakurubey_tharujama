@@ -4,7 +4,7 @@ import 'package:bakurubey_tharujama/screens/search.dart';
 import 'package:bakurubey_tharujama/screens/surah_list.dart';
 import 'screens/juz_list.dart';
 import 'package:flutter/cupertino.dart';
-import 'style_elements.dart';
+import 'package:bakurubey_tharujama/style_elements.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -66,12 +66,25 @@ class _MyHomePageState extends State<MyHomePage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: const [
-                                      // ContactButton(
-                                      //     contactName: 'ޙަދީޘް އެމް ވީ',
-                                      //     uriString: 'https://t.me/ashraafmv'),
                                       ContactButton(
-                                          contactName: "އަޅުގަނޑު",
-                                          uriString: 'https://t.me/ahsammmm'),
+                                        contactName: 'ޙަދީޘްއެމްވީ',
+                                        uriString:
+                                            'https://hadithmv.github.io/books/quranBakurube',
+                                        icon: Icon(
+                                          Icons.open_in_new,
+                                          size: 30.0,
+                                          color: Color(0xff366ab7),
+                                        ),
+                                      ),
+                                      ContactButton(
+                                        contactName: "އަޅުގަނޑު",
+                                        uriString: 'https://t.me/ahsammmm',
+                                        icon: Icon(
+                                          Icons.telegram,
+                                          size: 30.0,
+                                          color: Color(0xff259cd8),
+                                        ),
+                                      ),
                                     ],
                                   )
                                 ],
