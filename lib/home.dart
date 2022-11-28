@@ -2,6 +2,7 @@ import 'package:bakurubey_tharujama/contact_button.dart';
 import 'package:bakurubey_tharujama/lists.dart';
 import 'package:bakurubey_tharujama/screens/search.dart';
 import 'package:bakurubey_tharujama/screens/surah_list.dart';
+import 'package:quran/quran.dart';
 import 'screens/juz_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:bakurubey_tharujama/style_elements.dart';
@@ -61,6 +62,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Text(
                                     tributeText,
                                     style: translationTextStyle,
+                                  ),
+                                  Text(
+                                    getVerse(1, 7, verseEndSymbol: true),
+                                    style: TextStyle(
+                                      fontFamily: 'Uthmanic',
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                   Row(
                                     mainAxisAlignment:
