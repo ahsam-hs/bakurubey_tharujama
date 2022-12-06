@@ -1,5 +1,6 @@
 import 'package:bakurubey_tharujama/style_elements.dart';
 import 'package:flutter/material.dart';
+import 'package:quran/quran.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 import 'home.dart';
 

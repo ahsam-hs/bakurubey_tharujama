@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bakurubey_tharujama/translation_text_widget.dart';
 import 'package:bakurubey_tharujama/copy.dart';
+import 'package:arabic_numbers/arabic_numbers.dart';
+import 'package:quran/quran.dart';
 
 class SurahPage extends StatefulWidget {
   const SurahPage(
@@ -16,6 +18,7 @@ class SurahPage extends StatefulWidget {
 }
 
 class _SurahPageState extends State<SurahPage> {
+  final arabicNumbers = ArabicNumbers();
   List<dynamic> _aayaat = [];
 
   Future<void> readJson() async {
@@ -87,11 +90,35 @@ class _SurahPageState extends State<SurahPage> {
                             padding: cardShowInsets,
                             child: GestureDetector(
                               child: Text(
-                                _aayaat[count]["ayah"], //"ayah"
+                                //   _aayaat[count]["ayah"], //"ayah"
+                                int.parse(widget.surahNumber) == 1 ||
+                                        int.parse(widget.surahNumber) == 9
+                                    ? getVerse(int.parse(widget.surahNumber),
+                                                count + 1)
+                                            .replaceAll("۟", "") +
+                                        " " +
+                                        arabicNumbers.convert(count + 1)
+                                    : count == 0
+                                        ? basmala +
+                                            "\n" +
+                                            getVerse(
+                                                int.parse(widget.surahNumber),
+                                                count + 1) +
+                                            " " +
+                                            arabicNumbers.convert(count + 1)
+                                        : getVerse(
+                                                    int.parse(
+                                                        widget.surahNumber),
+                                                    count + 1)
+                                                .replaceAll("۟", "") +
+                                            " " +
+                                            arabicNumbers.convert(count + 1),
                                 style: ayahTextStyle,
                               ),
                               onLongPress: () => copyData(
-                                  _aayaat[count]["ayah"],
+                                  // _aayaat[count]["ayah"],
+                                  getVerse(
+                                      int.parse(widget.surahNumber), count + 1),
                                   "އާޔަތް ކޮޕީކުރެވިއްޖެ",
                                   context),
                             ),

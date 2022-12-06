@@ -181,7 +181,7 @@ List<String> juzName = [
   "عم",
 ];
 
-List<String> arabicNumbers = [
+List<String> surahArabicNumbers = [
   '١',
   '٢',
   '٣',

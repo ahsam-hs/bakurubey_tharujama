@@ -35,13 +35,13 @@ const dropDownNumberTextStyle = TextStyle(
 const ayahTextStyle = TextStyle(
   fontFamily: 'Uthmanic',
   color: Color(0xffe1ece9),
-  fontSize: 28.0,
+  fontSize: 26.0,
 );
 
 TextStyle translationTextStyle = TextStyle(
   fontFamily: 'Typewriter',
   color: mainTextColor,
-  fontSize: 17.0,
+  fontSize: 16.0,
 );
 
 const pageTitleStyle = TextStyle(

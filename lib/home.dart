@@ -7,6 +7,7 @@ import 'screens/juz_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:bakurubey_tharujama/style_elements.dart';
 import 'package:flutter/material.dart';
+import 'package:arabic_numbers/arabic_numbers.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -17,6 +18,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final arabicNumbers = ArabicNumbers();
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -62,14 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Text(
                                     tributeText,
                                     style: translationTextStyle,
-                                  ),
-                                  Text(
-                                    getVerse(1, 7, verseEndSymbol: true),
-                                    style: TextStyle(
-                                      fontFamily: 'Uthmanic',
-                                      fontSize: 25,
-                                      color: Colors.white,
-                                    ),
                                   ),
                                   Row(
                                     mainAxisAlignment:

@@ -70,7 +70,7 @@ class _SurahListState extends State<SurahList> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(
-                              lists.arabicNumbers[count],
+                              lists.surahArabicNumbers[count],
                               style: TextStyle(
                                 fontFamily: 'times',
                                 color: subTextColor,

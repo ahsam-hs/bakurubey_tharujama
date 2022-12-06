@@ -22,6 +22,7 @@ dependencies:
   expandable: ^5.0.1
   url_launcher: ^6.1.6
   splash_screen_view: ^3.0.0
+  arabic_numbers: ^1.0.0
 
 dev_dependencies:
   flutter_test:
