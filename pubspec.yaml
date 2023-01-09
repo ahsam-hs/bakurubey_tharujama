@@ -50,6 +50,10 @@ flutter:
       fonts:
         - asset: fonts/UthmanicHafs_V20.ttf
 
+    - family: ArabicType
+      fonts:
+        - asset: fonts/ArabicType.ttf
+
     - family: Midhili
       fonts:
         - asset: fonts/midhilibold.ttf

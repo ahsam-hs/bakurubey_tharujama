@@ -88,39 +88,50 @@ class _SurahPageState extends State<SurahPage> {
                         children: [
                           Padding(
                             padding: cardShowInsets,
-                            child: GestureDetector(
-                              child: Text(
-                                //   _aayaat[count]["ayah"], //"ayah"
-                                int.parse(widget.surahNumber) == 1 ||
-                                        int.parse(widget.surahNumber) == 9
-                                    ? getVerse(int.parse(widget.surahNumber),
-                                                count + 1)
-                                            .replaceAll("۟", "") +
-                                        " " +
-                                        arabicNumbers.convert(count + 1)
-                                    : count == 0
-                                        ? basmala +
-                                            "\n" +
-                                            getVerse(
-                                                int.parse(widget.surahNumber),
-                                                count + 1) +
-                                            " " +
-                                            arabicNumbers.convert(count + 1)
-                                        : getVerse(
-                                                    int.parse(
-                                                        widget.surahNumber),
-                                                    count + 1)
-                                                .replaceAll("۟", "") +
-                                            " " +
-                                            arabicNumbers.convert(count + 1),
-                                style: ayahTextStyle,
-                              ),
-                              onLongPress: () => copyData(
-                                  // _aayaat[count]["ayah"],
-                                  getVerse(
-                                      int.parse(widget.surahNumber), count + 1),
-                                  "އާޔަތް ކޮޕީކުރެވިއްޖެ",
-                                  context),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: GestureDetector(
+                                    child: Text(
+                                      //   _aayaat[count]["ayah"], //"ayah"
+                                      int.parse(widget.surahNumber) == 1 ||
+                                              int.parse(widget.surahNumber) == 9
+                                          ? getVerse(
+                                              int.parse(widget.surahNumber),
+                                              count + 1)
+                                          : count == 0
+                                              ? basmala +
+                                                  "\n" +
+                                                  getVerse(
+                                                      int.parse(
+                                                          widget.surahNumber),
+                                                      count + 1)
+                                              : getVerse(
+                                                      int.parse(
+                                                          widget.surahNumber),
+                                                      count + 1) +
+                                                  " ",
+                                      //    arabicNumbers.convert(count + 1),
+                                      style: ayahTextStyle,
+                                    ),
+                                    onLongPress: () => copyData(
+                                        // _aayaat[count]["ayah"],
+                                        getVerse(int.parse(widget.surahNumber),
+                                            count + 1),
+                                        "އާޔަތް ކޮޕީކުރެވިއްޖެ",
+                                        context),
+                                  ),
+                                ),
+                                Text(
+                                  arabicNumbers.convert(count + 1),
+                                  style: TextStyle(
+                                    fontFamily: 'Uthmanic',
+                                    color: Colors.white,
+                                    fontSize: 25.0,
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                           GestureDetector(

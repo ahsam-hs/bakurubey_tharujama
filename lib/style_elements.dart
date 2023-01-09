@@ -33,9 +33,9 @@ const dropDownNumberTextStyle = TextStyle(
 
 //Text styles
 const ayahTextStyle = TextStyle(
-  fontFamily: 'Uthmanic',
+  fontFamily: 'ArabicType',
   color: Color(0xffe1ece9),
-  fontSize: 26.0,
+  fontSize: 29.0,
 );
 
 TextStyle translationTextStyle = TextStyle(
