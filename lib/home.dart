@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           backgroundColor: bgColor,
           appBar: AppBar(
@@ -113,9 +113,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 30,
                   text: 'ސޫރަތްތައް',
                 ),
-                Tab(
-                  text: 'ޖުޒްއުތައް',
-                ),
+                // Tab(
+                //   text: 'ޖުޒްއުތައް',
+                // ),
                 Tab(
                   icon: Icon(
                     Icons.search_rounded,
@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           body: const TabBarView(
-            children: [SurahList(), JuzList(), Search()],
+            children: [SurahList(), Search()],
           ),
         ),
       ),
