@@ -19,6 +19,7 @@ class TranslationText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceOrientation = MediaQuery.of(context).orientation;
     return Padding(
       padding: const EdgeInsets.only(left: 25.0, right: 25.0),
       child: ExpandableNotifier(
@@ -27,9 +28,15 @@ class TranslationText extends StatelessWidget {
             theme: const ExpandableThemeData(iconColor: Colors.white70),
             header: Text(
               dhivehiLabel,
-              style: translationTextStyle.copyWith(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold),
+              style: deviceOrientation == Orientation.portrait
+                  ? translationTextStyle.copyWith(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold)
+                  : translationTextStyle.copyWith(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ),
             ),
             collapsed: const SizedBox(
               height: 0,
@@ -37,7 +44,9 @@ class TranslationText extends StatelessWidget {
             expanded: Text(
               _aayaat[counter][item],
               textAlign: TextAlign.start,
-              style: translationTextStyle,
+              style: deviceOrientation == Orientation.portrait
+                  ? translationTextStyle
+                  : translationTextStyle.copyWith(fontSize: 20.0),
             ),
             builder: (_, collapsed, expanded) => Expandable(
               collapsed: collapsed,

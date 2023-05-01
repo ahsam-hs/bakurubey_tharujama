@@ -41,6 +41,8 @@ class _SurahPageState extends State<SurahPage> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceOrientation = MediaQuery.of(context).orientation;
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -113,7 +115,11 @@ class _SurahPageState extends State<SurahPage> {
                                                       count + 1) +
                                                   " ",
                                       //    arabicNumbers.convert(count + 1),
-                                      style: ayahTextStyle,
+                                      style: deviceOrientation ==
+                                              Orientation.portrait
+                                          ? ayahTextStyle
+                                          : ayahTextStyle.copyWith(
+                                              fontSize: 38),
                                     ),
                                     onLongPress: () => copyData(
                                         // _aayaat[count]["ayah"],
@@ -128,7 +134,10 @@ class _SurahPageState extends State<SurahPage> {
                                   style: TextStyle(
                                     fontFamily: 'Uthmanic',
                                     color: Colors.white,
-                                    fontSize: 25.0,
+                                    fontSize: deviceOrientation ==
+                                            Orientation.portrait
+                                        ? 25.0
+                                        : 35.0,
                                   ),
                                 )
                               ],
