@@ -119,7 +119,7 @@ class _SurahPageState extends State<SurahPage> {
                                               Orientation.portrait
                                           ? ayahTextStyle
                                           : ayahTextStyle.copyWith(
-                                              fontSize: 38),
+                                              fontSize: 50),
                                     ),
                                     onLongPress: () => copyData(
                                         // _aayaat[count]["ayah"],
@@ -137,7 +137,7 @@ class _SurahPageState extends State<SurahPage> {
                                     fontSize: deviceOrientation ==
                                             Orientation.portrait
                                         ? 25.0
-                                        : 35.0,
+                                        : 45.0,
                                   ),
                                 )
                               ],

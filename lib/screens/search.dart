@@ -72,6 +72,7 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceOrientation = MediaQuery.of(context).orientation;
     return ListView(
       children: [
         Padding(
@@ -96,9 +97,12 @@ class _SearchState extends State<Search> {
                             dropdownColor: cardColor,
                             borderRadius: BorderRadius.circular(18),
                             isExpanded: false,
-                            hint: const Text(
+                            hint: Text(
                               'ސޫރަތް',
-                              style: dropDownNumberTextStyle,
+                              style: deviceOrientation == Orientation.portrait
+                                  ? dropDownNumberTextStyle
+                                  : dropDownNumberTextStyle.copyWith(
+                                      fontSize: 25.0),
                             ),
                             value: selectedSurahValue,
                             items: lists.surah
@@ -106,14 +110,19 @@ class _SearchState extends State<Search> {
                                   (s) => DropdownMenuItem(
                                     value: s,
                                     child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10.0, vertical: 0),
                                       child: Align(
                                         alignment: Alignment.centerRight,
                                         child: Text(
                                           s.substring(s.indexOf('س')),
                                           textDirection: TextDirection.rtl,
-                                          style: surahListStyle,
-                                          overflow: TextOverflow.ellipsis,
+                                          style: deviceOrientation ==
+                                                  Orientation.portrait
+                                              ? surahListStyle
+                                              : surahListStyle.copyWith(
+                                                  fontSize: 30.0),
+                                          overflow: TextOverflow.fade,
                                         ),
                                       ),
                                     ),
@@ -148,7 +157,10 @@ class _SearchState extends State<Search> {
                           builder: (context, setState) => DropdownButton(
                             hint: Text(
                               ayai,
-                              style: dropDownNumberTextStyle,
+                              style: deviceOrientation == Orientation.portrait
+                                  ? dropDownNumberTextStyle
+                                  : dropDownNumberTextStyle.copyWith(
+                                      fontSize: 25.0),
                             ),
                             dropdownColor: cardColor,
                             borderRadius: BorderRadius.circular(18),
@@ -163,7 +175,11 @@ class _SearchState extends State<Search> {
                                         child: Text(
                                           e,
                                           textDirection: TextDirection.rtl,
-                                          style: dropDownNumberTextStyle,
+                                          style: deviceOrientation ==
+                                                  Orientation.portrait
+                                              ? dropDownNumberTextStyle
+                                              : dropDownNumberTextStyle
+                                                  .copyWith(fontSize: 25.0),
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
@@ -235,11 +251,13 @@ class _SearchState extends State<Search> {
                                 getSelectedSurah(), ayahNumberText - 1);
                           });
                         },
-                        child: const Text(
+                        child: Text(
                           'ހޯދާ',
                           style: TextStyle(
                             fontFamily: 'Waheed',
-                            fontSize: 20,
+                            fontSize: deviceOrientation == Orientation.portrait
+                                ? 20
+                                : 30,
                           ),
                         ),
                       ),
@@ -295,7 +313,9 @@ class _SearchState extends State<Search> {
                         finalAyahText, "އާޔަތް ކޮޕީކުރެވިއްޖެ", context),
                     child: SearchResult(
                       resultText: finalAyahText,
-                      resultStyle: ayahTextStyle,
+                      resultStyle: deviceOrientation == Orientation.portrait
+                          ? ayahTextStyle
+                          : ayahTextStyle.copyWith(fontSize: 45.0),
                     ),
                   ),
                   GestureDetector(
@@ -303,7 +323,9 @@ class _SearchState extends State<Search> {
                         "އިޖްމާލީ މާނަ ކޮޕީކުރެވިއްޖެ", context),
                     child: SearchResult(
                       resultText: ijmaalee + ": " + finalTranslationText,
-                      resultStyle: translationTextStyle,
+                      resultStyle: deviceOrientation == Orientation.portrait
+                          ? translationTextStyle
+                          : translationTextStyle.copyWith(fontSize: 25.0),
                     ),
                   ),
                   GestureDetector(
@@ -311,7 +333,9 @@ class _SearchState extends State<Search> {
                         "ލަފްޒީ މާނަ ކޮޕީކުރެވިއްޖެ", context),
                     child: SearchResult(
                       resultText: lafzee + ": " + finalLiteraryText,
-                      resultStyle: translationTextStyle,
+                      resultStyle: deviceOrientation == Orientation.portrait
+                          ? translationTextStyle
+                          : translationTextStyle.copyWith(fontSize: 25.0),
                     ),
                   ),
                 ],

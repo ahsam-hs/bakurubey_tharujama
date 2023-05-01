@@ -35,7 +35,7 @@ class TranslationText extends StatelessWidget {
                   : translationTextStyle.copyWith(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
+                      fontSize: 25.0,
                     ),
             ),
             collapsed: const SizedBox(
@@ -46,7 +46,7 @@ class TranslationText extends StatelessWidget {
               textAlign: TextAlign.start,
               style: deviceOrientation == Orientation.portrait
                   ? translationTextStyle
-                  : translationTextStyle.copyWith(fontSize: 20.0),
+                  : translationTextStyle.copyWith(fontSize: 25.0),
             ),
             builder: (_, collapsed, expanded) => Expandable(
               collapsed: collapsed,

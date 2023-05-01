@@ -16,6 +16,7 @@ class SurahList extends StatefulWidget {
 class _SurahListState extends State<SurahList> {
   @override
   Widget build(BuildContext context) {
+    final deviceOrientation = MediaQuery.of(context).orientation;
     return ListView.builder(
         itemCount: lists.surah.length,
         itemBuilder: (context, count) {
@@ -54,7 +55,9 @@ class _SurahListState extends State<SurahList> {
                           children: [
                             Text(
                               surahName.substring(surahName.indexOf('س')),
-                              style: surahListStyle,
+                              style: deviceOrientation == Orientation.portrait
+                                  ? surahListStyle
+                                  : surahListStyle.copyWith(fontSize: 30),
                             ),
                             Text(
                               quran.getVerseCount(count + 1).toString() +
@@ -62,6 +65,10 @@ class _SurahListState extends State<SurahList> {
                               style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontFamily: 'Waheed',
+                                fontSize:
+                                    deviceOrientation == Orientation.portrait
+                                        ? 15
+                                        : 24,
                               ),
                             )
                           ],
@@ -74,7 +81,10 @@ class _SurahListState extends State<SurahList> {
                               style: TextStyle(
                                 fontFamily: 'times',
                                 color: subTextColor,
-                                fontSize: 15.0,
+                                fontSize:
+                                    deviceOrientation == Orientation.portrait
+                                        ? 15.0
+                                        : 24,
                               ),
                             ),
                             Text(
@@ -84,7 +94,10 @@ class _SurahListState extends State<SurahList> {
                               style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                   fontFamily: 'Waheed',
-                                  fontSize: 15.0),
+                                  fontSize:
+                                      deviceOrientation == Orientation.portrait
+                                          ? 15.0
+                                          : 24),
                             ),
                           ],
                         ),

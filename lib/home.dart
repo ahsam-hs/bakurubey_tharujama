@@ -21,6 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final arabicNumbers = ArabicNumbers();
   @override
   Widget build(BuildContext context) {
+    final deviceOrientation = MediaQuery.of(context).orientation;
     return Directionality(
       textDirection: TextDirection.rtl,
       child: DefaultTabController(
@@ -28,13 +29,22 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Scaffold(
           backgroundColor: bgColor,
           appBar: AppBar(
+            titleTextStyle: TextStyle(
+              color: primeColor,
+              fontFamily: 'Midhili',
+              fontSize:
+                  MediaQuery.of(context).orientation == Orientation.portrait
+                      ? 20
+                      : 29,
+            ),
             actions: [
               Padding(
                 padding: const EdgeInsets.only(left: 30.0),
                 child: IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.info,
-                    size: 15.0,
+                    size:
+                        deviceOrientation == Orientation.portrait ? 15.0 : 30.0,
                   ),
                   onPressed: () {
                     showDialog(
@@ -63,7 +73,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                   Text(
                                     tributeText,
-                                    style: translationTextStyle,
+                                    style: deviceOrientation ==
+                                            Orientation.portrait
+                                        ? translationTextStyle
+                                        : translationTextStyle.copyWith(
+                                            fontSize: 24.0),
                                   ),
                                   Row(
                                     mainAxisAlignment:
@@ -105,12 +119,26 @@ class _MyHomePageState extends State<MyHomePage> {
               color: lightCardColor,
               size: 20.0,
             ),
-            bottom: const TabBar(
+            bottom: TabBar(
+              unselectedLabelStyle: TextStyle(
+                fontFamily: 'Waheed',
+                fontSize:
+                    MediaQuery.of(context).orientation == Orientation.portrait
+                        ? 16.0
+                        : 22.0,
+              ),
+              labelStyle: TextStyle(
+                fontFamily: 'Waheed',
+                fontSize:
+                    MediaQuery.of(context).orientation == Orientation.portrait
+                        ? 18.0
+                        : 25.0,
+              ),
               isScrollable: true,
               indicatorPadding: EdgeInsets.symmetric(vertical: 10.0),
               tabs: [
                 Tab(
-                  height: 30,
+                  height: deviceOrientation == Orientation.portrait ? 30 : 50,
                   text: 'ސޫރަތްތައް',
                 ),
                 // Tab(
@@ -119,7 +147,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Tab(
                   icon: Icon(
                     Icons.search_rounded,
-                    size: 15.0,
+                    size:
+                        deviceOrientation == Orientation.portrait ? 15.0 : 24.0,
                   ),
                 )
               ],

@@ -34,26 +34,13 @@ class _MyAppState extends State<MyApp> {
             color: lightCardColor,
           ),
           indicatorSize: TabBarIndicatorSize.tab,
-          labelStyle: const TextStyle(
-            fontFamily: 'Waheed',
-            fontSize: 18.0,
-          ),
           labelPadding: const EdgeInsets.symmetric(horizontal: 35.0),
           labelColor: Colors.white,
-          unselectedLabelStyle: const TextStyle(
-            fontFamily: 'Waheed',
-            fontSize: 16.0,
-          ),
         ),
         appBarTheme: AppBarTheme(
           scrolledUnderElevation: 10.0,
           elevation: 0.0,
           backgroundColor: bgColor,
-          titleTextStyle: TextStyle(
-            color: primeColor,
-            fontFamily: 'Midhili',
-            fontSize: 20,
-          ),
           centerTitle: true,
         ),
       ),
