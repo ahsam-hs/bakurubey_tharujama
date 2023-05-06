@@ -1,5 +1,6 @@
 import 'package:bakurubey_tharujama/contact_button.dart';
 import 'package:bakurubey_tharujama/lists.dart';
+import 'package:bakurubey_tharujama/screens/manual.dart';
 import 'package:bakurubey_tharujama/screens/search.dart';
 import 'package:bakurubey_tharujama/screens/surah_list.dart';
 import 'package:quran/quran.dart';
@@ -25,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: DefaultTabController(
-        length: 2,
+        length: 3,
         child: Scaffold(
           backgroundColor: bgColor,
           appBar: AppBar(
@@ -103,7 +104,38 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                       ),
                                     ],
-                                  )
+                                  ),
+                                  ElevatedButton(
+                                    style: ButtonStyle(
+                                        shape:
+                                            MaterialStateProperty.resolveWith(
+                                                (states) =>
+                                                    RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    )),
+                                        backgroundColor:
+                                            MaterialStateColor.resolveWith(
+                                                (states) => buttonColor)),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const Manual()));
+                                    },
+                                    child: Text(
+                                      "އެޕް ބޭނުންކުރާ ގޮތް",
+                                      style: TextStyle(
+                                        fontFamily: 'Waheed',
+                                        fontSize: deviceOrientation ==
+                                                Orientation.portrait
+                                            ? 20
+                                            : 30,
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -141,9 +173,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: deviceOrientation == Orientation.portrait ? 30 : 50,
                   text: 'ސޫރަތްތައް',
                 ),
-                // Tab(
-                //   text: 'ޖުޒްއުތައް',
-                // ),
+                Tab(
+                  height: deviceOrientation == Orientation.portrait ? 30 : 50,
+                  text: 'ޖުޒްއުތައް',
+                ),
                 Tab(
                   icon: Icon(
                     Icons.search_rounded,
@@ -158,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           body: const TabBarView(
-            children: [SurahList(), Search()],
+            children: [SurahList(), JuzList(), Search()],
           ),
         ),
       ),

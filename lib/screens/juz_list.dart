@@ -15,6 +15,7 @@ class JuzList extends StatefulWidget {
 class _JuzListState extends State<JuzList> {
   @override
   Widget build(BuildContext context) {
+    final deviceOrientation = MediaQuery.of(context).orientation;
     return ListView.builder(
         itemCount: 30,
         itemBuilder: (context, count) {
@@ -50,14 +51,18 @@ class _JuzListState extends State<JuzList> {
                       children: [
                         Text(
                           lists.juzName[count],
-                          style: surahListStyle,
+                          style: deviceOrientation == Orientation.portrait
+                              ? surahListStyle
+                              : surahListStyle.copyWith(fontSize: 30),
                         ),
                         Text(
                           lists.juzArabicNumbers[count],
                           style: TextStyle(
                             fontFamily: 'times',
                             color: subTextColor,
-                            fontSize: 20.0,
+                            fontSize: deviceOrientation == Orientation.portrait
+                                ? 15.0
+                                : 24,
                           ),
                         ),
                       ],
