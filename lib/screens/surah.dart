@@ -145,26 +145,26 @@ class _SurahPageState extends State<SurahPage> {
                           ),
                           GestureDetector(
                             onLongPress: () => copyData(
-                                _aayaat[count]["literary"], // Ijmaalee maana
+                                _aayaat[count]["translation"], // Ijmaalee maana
                                 "އިޖްމާލީ މާނަ ކޮޕީކުރެވިއްޖެ",
                                 context),
                             child: TranslationText(
                                 aayaat: _aayaat,
                                 counter: count,
                                 dhivehiLabel: "އިޖްމާލީ މާނަ",
-                                item: "literary"),
+                                item: "translation"),
                           ),
                           const SizedBox(
                             height: 15.0,
                           ),
                           GestureDetector(
                             onLongPress: () => copyData(
-                                _aayaat[count]["translation"], // Lafzee maana
+                                _aayaat[count]["literary"], // Lafzee maana
                                 "ލަފްޒީ މާނަ ކޮޕީކުރެވިއްޖެ",
                                 context),
                             child: TranslationText(
                               aayaat: _aayaat,
-                              item: "translation",
+                              item: "literary",
                               counter: count,
                               dhivehiLabel: "ލަފްޒީ މާނަ",
                             ),
