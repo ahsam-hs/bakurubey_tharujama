@@ -37,6 +37,7 @@ class _JuzPageState extends State<JuzPage> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceOrientation = MediaQuery.of(context).orientation;
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -55,7 +56,9 @@ class _JuzPageState extends State<JuzPage> {
             widget.juzName,
             textAlign: TextAlign.center,
             maxLines: 1,
-            style: pageTitleStyle,
+            style: deviceOrientation == Orientation.portrait
+                ? pageTitleStyle
+                : pageTitleStyle.copyWith(fontSize: 30.0),
           ),
         ),
         body: SizedBox.expand(
@@ -89,34 +92,36 @@ class _JuzPageState extends State<JuzPage> {
                               padding: cardShowInsets,
                               child: Text(
                                 _aayaat[count]["ayah"],
-                                style: ayahTextStyle,
+                                style: deviceOrientation == Orientation.portrait
+                                    ? ayahTextStyle
+                                    : ayahTextStyle.copyWith(fontSize: 35.0),
                               ),
                             ),
                           ),
                           GestureDetector(
                             onLongPress: () => copyData(
-                                _aayaat[count]["literary"],
+                                _aayaat[count]["translation"],
                                 "އިޖްމާލީ މާނަ ކޮޕީކުރެވިއްޖެ",
                                 context),
                             child: TranslationText(
                                 aayaat: _aayaat,
                                 counter: count,
                                 dhivehiLabel: "އިޖްމާލީ މާނަ",
-                                item: "literary"),
+                                item: "translation"),
                           ),
                           const SizedBox(
                             height: 20.0,
                           ),
                           GestureDetector(
                             onLongPress: () => copyData(
-                                _aayaat[count]["translation"],
+                                _aayaat[count]["literary"],
                                 "ލަފްޒީ މާނަ ކޮޕީކުރެވިއްޖެ",
                                 context),
                             child: TranslationText(
                                 aayaat: _aayaat,
                                 counter: count,
                                 dhivehiLabel: "ލަފްޒީ މާނަ",
-                                item: "translation"),
+                                item: "literary"),
                           ),
                           const SizedBox(
                             height: 20.0,
